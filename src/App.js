@@ -1,10 +1,19 @@
 import React from "react";
-import { Grommet, Box,  } from "grommet";
+import { Grommet, Box, ResponsiveContext  } from "grommet";
 
-
+import DashBoard from "./features/Dashboard/Dashboard";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 const theme = {
   global: {
+    colors: {
+      brand: '#cc0000',
+      ok: '#00C781',
+    },
     font: {
       family: "Roboto",
       size: "18px",
@@ -14,12 +23,31 @@ const theme = {
 };
 
 function App() {
+  const [pos, setPos] = React.useState("0px");
+
+  const size = React.useContext(ResponsiveContext);
   return (
     <Grommet theme={theme} full>
-      <Box fill align="center" justify="center" background="dark-2">
-        
+      <Box fill align="center" justify="center" background="dark-2" onMouseMove={e => {
+            let x = 0;
+            
+            if (size==="small"){
+                x = (e.screenX-768/2)/768*25+"px";
+            }else {
+                x = (e.screenX-1536/2)/1536*25+"px";
+            }
+
+            setPos(x)
+            
+            }}>
+      <Router>
+        <Switch>
+          <Route path="/">
+            <DashBoard pos={pos}/>
+          </Route>
+        </Switch>
+    </Router>
       </Box>
-  
     </Grommet>
   );
 }
