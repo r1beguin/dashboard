@@ -4,14 +4,15 @@ import {Box, Text} from 'grommet';
 
 import Weather from "../Weather/Weather"
 
-const Dashboard = () => {
+const Dashboard = ({pos}) => {
+
 
 
     return(
-        <Box align="center" justify="center">
+        <Box align="center" justify="center" >
             <Text as="h1">Bonjour Erwan</Text>
             <Box margin="small">
-                <Weather />
+                <Weather pos={pos}/>
             </Box>
         </Box>
     )
