@@ -10,11 +10,15 @@ const ParralaxBigCloud = styled(Box)`
 const ParralaxLittleCloud = styled(Box)`
     transform: translateX(${props => props.moveX}); 
 `;
+const ParralaxDrop = styled(Box)`
+    transform: translate(${props => props.moveX}, ${props => props.moveX}); 
+    
+`;
 
 const Rain = ({pos}) => {
 
     return (
-        <Box align="center" justify="center">
+        <Box align="center">
         <Stack anchor="bottom" style={{opacity: 0.5}} >
 
             <ParralaxBigCloud background="#edf4f5" width="160px" height="50px" round="medium" elevation="small" moveX={() => {
@@ -30,10 +34,28 @@ const Rain = ({pos}) => {
                      return x+"px"
                 }}/>
             </Stack>
-          
+            
         </Stack>
-          
+        <Box direction="row" justify='between' margin="small" gap="small"> 
+            <ParralaxDrop width="10px" height="10px" round="full" background="neutral-3" moveX={() => {
+                     const x = parseFloat(pos.match(/^\d*.\d{2}/g,''))*0.25
+                     return x+"px"
+                }}/>
+            <ParralaxDrop width="10px" height="10px" round="full" background="neutral-3" moveX={() => {
+                     const x = parseFloat(pos.match(/^\d*.\d{2}/g,''))*0.35
+                     return x+"px"
+                }}/>
+            <ParralaxDrop width="10px" height="10px" round="full" background="neutral-3" moveX={() => {
+                     const x = parseFloat(pos.match(/^\d*.\d{2}/g,''))*0.25
+                     return x+"px"
+                }}/>
+            <ParralaxDrop width="10px" height="10px" round="full" background="neutral-3" moveX={() => {
+                     const x = parseFloat(pos.match(/^\d*.\d{2}/g,''))*0.35
+                     return x+"px"
+                }}/>
+           
         </Box>
+    </Box>
     )
 }
 

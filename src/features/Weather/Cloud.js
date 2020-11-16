@@ -28,7 +28,9 @@ const Cloud = ({pos}) => {
                      return x+"px"
                 }}/>
             </Stack>
+            
         </Stack>
+        
     )
 }
 
