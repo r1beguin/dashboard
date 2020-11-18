@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Text, Stack, Button, Image } from "grommet";
+import { Box, Text, Stack, Button } from "grommet";
 import { Refresh } from "grommet-icons"
 
 import Cloud from "./Cloud";
@@ -8,11 +8,6 @@ import Rain from "./Rain";
 import Sun from "./Sun";
 
 import secret from "../../secret.json";
-
-
-import sun from "../../asset/icons/sun.png";
-import cloud from "../../asset/icons/cloud.png";
-import rain from "../../asset/icons/rain.png";
 
 const Weather = ({pos}) => {
 
@@ -53,7 +48,7 @@ const Weather = ({pos}) => {
         
        
 
-    }, [])
+    }, [refresh])
 
     return (
         <Box  background="dark-1" elevation="xsmall" round="small" pad={{bottom:"small"}} width="medium" margin="small" justify="center" align="center">
@@ -68,7 +63,9 @@ const Weather = ({pos}) => {
                         <Rain pos={pos} />
                     ):data && weather === "cloudy" ?(
                         <Cloud pos={pos} />
-                    ) : (
+                    ) : data && weather === "clear-day" ?(
+                        <Sun pos={pos} />
+                    ) :(
                         <Sun pos={pos}/>
                     )}
                     
@@ -80,14 +77,7 @@ const Weather = ({pos}) => {
                 <Text weight="bold">{date}</Text>
                 <Text >{time}</Text>
                 <Text >{data && data.currently.icon}</Text>
-            </Box>
-           
-           <Box align="center" direction="row">
-                <Button icon={<Box width="xxsmall" height="xxsmall" ><Image fit="contain" src={sun} /></Box>} onClick={() => setWeather("sun")}/>
-                <Button icon={<Box width="xxsmall" height="xxsmall" ><Image fit="contain" src={cloud} /></Box>} onClick={() => setWeather("cloudy")}/>
-                <Button icon={<Box width="xxsmall" height="xxsmall" ><Image fit="contain" src={rain} /></Box>} onClick={() => setWeather("rain")}/>
-            </Box>
-                
+            </Box>        
         </Box>
     )
 }

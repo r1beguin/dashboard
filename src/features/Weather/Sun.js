@@ -3,10 +3,6 @@ import React from "react";
 import { Box, Stack } from "grommet";
 import styled from "styled-components";
 
-
-const ParralaxSun = styled(Box)`
-    transform: translateX(${props => props.moveX}) ;  
-`;
 const ParralaxRay = styled(Box)`
     transform: rotate(${props => props.moveX}) ;  
 `;
