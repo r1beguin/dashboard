@@ -56,12 +56,12 @@ const Weather = ({pos}) => {
                 <Button icon={<Refresh />} onClick={() => setRefresh(true)} />
             </Box>
             
-                <Stack anchor="center" margin={{top:"large", bottom:"small"}}>
+                <Stack anchor="center" margin={{ bottom:"medium"}}>
 
 
                     {data && weather === "rain" ? (
                         <Rain pos={pos} />
-                    ):data && weather === "cloudy" ?(
+                    ):data && weather === "cloudy" || weather=== "partly-cloudy-day" ?(
                         <Cloud pos={pos} />
                     ) : data && weather === "clear-day" ?(
                         <Sun pos={pos} />

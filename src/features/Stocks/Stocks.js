@@ -56,7 +56,7 @@ const Stocks = () => {
             setRefresh(false);
         }
 
-    }, [refresh])
+    }, [refresh,time])
 
     return (
         <Box  background="dark-1" elevation="xsmall" round="small" pad="small"  margin="small" justify="center" align="center" >
@@ -72,7 +72,7 @@ const Stocks = () => {
             </Box>
 
             <Box>
-                <LineChart width={400} height={ 300} data={data}
+                <LineChart width={400} height={200} data={data}
                 margin={{top: 5, right: 30, left: 20}}>
                     <XAxis dataKey="x" hide interval="preserveStartEnd" tick={false} />
                     <YAxis tick={false} hide />
