@@ -4,6 +4,7 @@ import { Box, Text, ResponsiveContext, Button } from "grommet";
 import { Refresh } from "grommet-icons"
 import {LineChart, Line, XAxis, YAxis, Tooltip} from "recharts";
 
+import secret from "../../secret.json";
 
 const Stocks = () => {
 
@@ -22,7 +23,7 @@ const Stocks = () => {
             fetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?${time}&symbol=TSLA&region=US`, {
                 "method": "GET",
                 "headers": {
-                    "x-rapidapi-key": "396c8c801cmsh03d8aa703d5356cp10f6bfjsneeb135511ccb",
+                    "x-rapidapi-key": secret,
                     "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
                 }
             })
