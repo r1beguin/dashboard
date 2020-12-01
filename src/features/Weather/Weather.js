@@ -51,7 +51,7 @@ const Weather = ({pos}) => {
     }, [refresh])
 
     return (
-        <Box  background="dark-1" elevation="xsmall" round="small" pad={{bottom:"small"}} width="medium" margin="small" justify="center" align="center">
+        <Box  background="card" round="small" pad={{bottom:"small"}} width="medium" margin="small" justify="center" align="center">
             <Box fill="horizontal" align="end">
                 <Button icon={<Refresh />} onClick={() => setRefresh(true)} />
             </Box>

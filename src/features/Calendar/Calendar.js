@@ -9,42 +9,51 @@ import ApiCalendar from 'react-google-calendar-api';
 const Calendar = () => {
 
     const [next, setNext] = React.useState();
-    const [start, setStart] =React.useState();
-    const [end, setEnd] = React.useState();
+    const size = React.useContext(ResponsiveContext);
+
 
     React.useEffect(() => {
         if (ApiCalendar.sign)
-        ApiCalendar.listUpcomingEvents(10)
+        ApiCalendar.listUpcomingEvents(5)
           .then(({result}: any) => {
             console.log(result.items);
-            setNext(result.items[0]);
-            setStart(new Date(result.items[0].start.dateTime))
-            setEnd(new Date(result.items[0].end.dateTime))
+            setNext(result.items);
+            
           });
     }, [ApiCalendar.sign])
 
     return (
-        <Box  background="dark-1" elevation="xsmall" round="small" pad="small"  margin="small" justify="center" align="center" height="small" width="medium">
+        <Box  background="card" round="small" pad="small"  margin="small" justify="center" align="center" width="medium" height="small
+        ">
             <Text>Calendar</Text>
             {!ApiCalendar.sign && (
                 <Box align="center" justify="center" gap="small" margin="small">
                     <Button label="Connexion" onClick={() => ApiCalendar.handleAuthClick()} color="brand"/>
                 </Box>
             )}
+            <Box height="small" gap="xxsmall">
 
-            {next && (
-                <Box background="brand" fill="horizontal" pad="small" margin="small" round="small" direction="row" align="center" justify="around" elevation="xxsmall">
-                        <Text>{start && start.toLocaleString().match(/^\d+\/\d+\/\d+/g,'')}</Text>
-                        <Box>
-                            <Text>{start && start.toLocaleString().match(/\d+:\d+/g,'')}</Text>
-                            <Text>{end && end.toLocaleString().match(/\d+:\d+/g,'')}</Text>
+            {next && 
+                next.map(item => {
+                    const start = new Date(item.start.dateTime);
+                    const end = new Date(item.end.dateTime)
+                    return (
+                        <Box background="accent"  pad="small" width="medium" round="small" direction="row" align="center" justify="around" elevation="xxsmall">
+                            <Text size="xsmall">{start && start.toLocaleString().match(/^\d+\/\d+\/\d+/g,'')}</Text>
+                            <Box>
+                                <Text size="xsmall">{start && start.toLocaleString().match(/\d+:\d+/g,'')}</Text>
+                                <Text size="xsmall">{end && end.toLocaleString().match(/\d+:\d+/g,'')}</Text>
+                            </Box>
+                            <Box align="center" justify="center" overflow="auto" width="xsmall">
+                                <Text size="xsmall" >{item.summary}</Text>
+                                
+                            </Box>
                         </Box>
-                        <Box align="center" justify="center">
-                            <Text>{next.summary}</Text>
-                            
-                        </Box>
-                </Box>
-            )}
+                    )
+                })
+               
+            }
+            </Box>
              
         </Box>
     )

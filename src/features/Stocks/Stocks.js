@@ -60,25 +60,25 @@ const Stocks = () => {
     }, [refresh,time])
 
     return (
-        <Box  background="dark-1" elevation="xsmall" round="small" pad="small"  margin="small" justify="center" align="center" >
+        <Box  background="card" width="medium" round="small" pad="small"  margin="small" justify="center" align="center" >
 
             <Box fill="horizontal" align="end">
                 <Button icon={<Refresh />} onClick={() => setRefresh(true)} />
             </Box>
 
             <Box align="center">
-                <Text color="brand">{current} $</Text>
-                <Text color="brand">{(situation*current).toString().match(/^\d+/g,'')} $</Text>
+                <Text color="accent">{current} $</Text>
+                <Text color="accent">{(situation*current).toString().match(/^\d+/g,'')} $</Text>
                           
             </Box>
 
             <Box>
-                <LineChart width={400} height={200} data={data}
+                <LineChart width={350} height={150} data={data}
                 margin={{top: 5, right: 30, left: 20}}>
                     <XAxis dataKey="x" hide interval="preserveStartEnd" tick={false} />
                     <YAxis tick={false} hide />
                     
-                    <Tooltip contentStyle={{color: "#cc0000"}}/>
+                    <Tooltip contentStyle={{color: "#994650"}}/>
                     
                     <Line dataKey="close" type="monotone"  stroke="#cc0000" dot={false}/>
                 </LineChart>
