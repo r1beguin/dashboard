@@ -2,6 +2,7 @@ import React from "react";
 import { Grommet, Box, ResponsiveContext  } from "grommet";
 
 import DashBoard from "./features/Dashboard/Dashboard";
+import Google from "./features/Google/Google";
 import {
   BrowserRouter as Router,
   Switch,
@@ -47,6 +48,9 @@ function App() {
         <Switch>
           <Route path="/">
             <DashBoard pos={pos}/>
+          </Route>
+          <Route path="/googleb361f288960081a4.html">
+            <Google/>
           </Route>
         </Switch>
     </Router>
