@@ -12,15 +12,17 @@ const Dashboard = ({pos}) => {
 
 
     return(
-        <Box  align="center"fill>
-            <Text as="h1">Bonjour Erwan</Text>
-            <Box direction={size ==="large" ? "row" : "column"} gap="small" align="center">
-                <Box >
-                    <Weather pos={pos}/>
-                </Box>
-                <Box >
-                    <Stocks/>
-                </Box>
+        <Box pad="medium" align="center" fill margin="small">
+            
+            <Box direction={size ==="large" ? "row" : "column"} gap="large" align="center">
+                <Box direction={(size==="large" || size==="medium") ? "row" : "column"} gap="large" align="center">
+                    <Box >
+                        <Weather pos={pos}/>
+                    </Box>
+                    <Box >
+                        <Stocks/>
+                    </Box>
+                </Box>    
                 <Box>
                     <Calendar/>
                 </Box>

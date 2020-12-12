@@ -2,9 +2,12 @@ import React from "react";
 
 import { Box, Text, ResponsiveContext, Button } from "grommet";
 import { Refresh } from "grommet-icons"
-import {LineChart, Line, XAxis, YAxis, Tooltip} from "recharts";
+import {LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer} from "recharts";
 
 import secret from "../../secret.json";
+
+import Card from "../../components/Card"
+import MiniButton from "../../components/MiniButton"
 
 const Stocks = () => {
 
@@ -60,31 +63,29 @@ const Stocks = () => {
     }, [refresh,time])
 
     return (
-        <Box  background="card" width="medium" round="small" pad="small"  margin="small" justify="center" align="center" >
+        <Card height="medium" round="small" pad="small" justify="center" align="center" >
+                
+                <MiniButton align="center" pad="medium">
+                    <Text size="small" color="brand">{current} $</Text>
+                    <Text size="small" color="brand">{(situation*current).toString().match(/^\d+/g,'')} $</Text>                     
+                </MiniButton>
 
-            <Box fill="horizontal" align="end">
-                <Button icon={<Refresh />} onClick={() => setRefresh(true)} />
+            <Box width="350px" height="60%">
+                <ResponsiveContainer >
+                    <LineChart data={data}
+                    margin={{top: 5, right: 30, left: 20}}>
+                        <XAxis dataKey="x" hide interval="preserveStartEnd" tick={false} />
+                        <YAxis tick={false} hide />
+                        
+                        <Tooltip contentStyle={{color: "#994650"}}/>
+                        
+                        <Line dataKey="close" type="monotone"  stroke="#cc0000" dot={false}/>
+                    </LineChart>
+                </ResponsiveContainer>
             </Box>
-
-            <Box align="center">
-                <Text color="accent">{current} $</Text>
-                <Text color="accent">{(situation*current).toString().match(/^\d+/g,'')} $</Text>
-                          
-            </Box>
-
-            <Box>
-                <LineChart width={350} height={150} data={data}
-                margin={{top: 5, right: 30, left: 20}}>
-                    <XAxis dataKey="x" hide interval="preserveStartEnd" tick={false} />
-                    <YAxis tick={false} hide />
-                    
-                    <Tooltip contentStyle={{color: "#994650"}}/>
-                    
-                    <Line dataKey="close" type="monotone"  stroke="#cc0000" dot={false}/>
-                </LineChart>
-            </Box>
+         
              
-        </Box>
+        </Card>
     )
 }
 

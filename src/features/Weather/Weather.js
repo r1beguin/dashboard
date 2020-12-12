@@ -1,13 +1,16 @@
 import React from "react";
 
-import { Box, Text, Stack, Button } from "grommet";
-import { Refresh } from "grommet-icons"
+import { Box, Text, Stack } from "grommet";
 
 import Cloud from "./Cloud";
 import Rain from "./Rain";
 import Sun from "./Sun";
 
 import secret from "../../secret.json";
+
+import Card from "../../components/Card"
+import MiniButton from "../../components/MiniButton"
+import CardConcave from "../../components/CardConcave";
 
 const Weather = ({pos}) => {
 
@@ -51,10 +54,8 @@ const Weather = ({pos}) => {
     }, [refresh])
 
     return (
-        <Box  background="card" round="small" pad={{bottom:"small"}} width="medium" margin="small" justify="center" align="center">
-            <Box fill="horizontal" align="end">
-                <Button icon={<Refresh />} onClick={() => setRefresh(true)} />
-            </Box>
+        <Card  pad="small" width="medium" justify="center" align="center">
+            <CardConcave pad={{top: "xlarge", horizontal:"small"}}>
             
                 <Stack anchor="center" margin={{ bottom:"medium"}}>
 
@@ -71,14 +72,15 @@ const Weather = ({pos}) => {
                     
                     <Text>{data && data.currently.temperature.toString().match(/^\d*/g,'')} C°</Text>
                 </Stack>
-                
+
+             </CardConcave>  
             
-            <Box align="center">
+            <Box pad="small" align="center">
                 <Text weight="bold">{date}</Text>
                 <Text >{time}</Text>
                 <Text >{data && data.currently.icon}</Text>
             </Box>        
-        </Box>
+        </Card>
     )
 }
 

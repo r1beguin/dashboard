@@ -1,10 +1,11 @@
 import React from "react";
 
 import { Box, Text, ResponsiveContext, Button } from "grommet";
-import { Refresh } from "grommet-icons"
 
 import ApiCalendar from 'react-google-calendar-api';
 
+import Card from "../../components/Card"
+import CardConcave from "../../components/CardConcave"
 
 const Calendar = () => {
 
@@ -14,7 +15,7 @@ const Calendar = () => {
 
     React.useEffect(() => {
         if (ApiCalendar.sign)
-        ApiCalendar.listUpcomingEvents(5)
+        ApiCalendar.listUpcomingEvents(3)
           .then(({result}: any) => {
             console.log(result.items);
             setNext(result.items);
@@ -23,39 +24,45 @@ const Calendar = () => {
     }, [ApiCalendar.sign])
 
     return (
-        <Box  background="card" round="small" pad="small"  margin="small" justify="center" align="center" width="medium" height="small
-        ">
-            <Text>Calendar</Text>
+        <Card pad="small" justify="center" align="center" width="medium">
+            
             {!ApiCalendar.sign && (
                 <Box align="center" justify="center" gap="small" margin="small">
                     <Button label="Connexion" onClick={() => ApiCalendar.handleAuthClick()} color="brand"/>
                 </Box>
             )}
-            <Box height="small" gap="xxsmall">
+            <Box height="small" gap="small">
 
             {next && 
                 next.map(item => {
                     const start = new Date(item.start.dateTime);
                     const end = new Date(item.end.dateTime)
                     return (
-                        <Box background="accent"  pad="small" width="medium" round="small" direction="row" align="center" justify="around" elevation="xxsmall">
-                            <Text size="xsmall">{start && start.toLocaleString().match(/^\d+\/\d+\/\d+/g,'')}</Text>
-                            <Box>
-                                <Text size="xsmall">{start && start.toLocaleString().match(/\d+:\d+/g,'')}</Text>
-                                <Text size="xsmall">{end && end.toLocaleString().match(/\d+:\d+/g,'')}</Text>
-                            </Box>
+                        <CardConcave gap="medium" pad="medium"round="small" direction="row" align="center" justify="center" elevation="xxsmall">
+                            {start && (
+                                <Box gap="medium" direction="row" align="center">
+                                <Text size="xsmall">{start && start.toLocaleString().match(/^\d+\/\d+\/\d+/g,'')}</Text>
+                                <Box>
+                                    <Text size="xsmall">{start && start.toLocaleString().match(/\d+:\d+/g,'')}</Text>
+                                    <Text size="xsmall">{end && end.toLocaleString().match(/\d+:\d+/g,'')}</Text>
+                                </Box>
+                                </Box>
+
+                            ) }
+                            
+                            
                             <Box align="center" justify="center" overflow="auto" width="xsmall">
                                 <Text size="xsmall" >{item.summary}</Text>
                                 
                             </Box>
-                        </Box>
+                        </CardConcave>
                     )
                 })
                
             }
             </Box>
              
-        </Box>
+        </Card>
     )
 }
 

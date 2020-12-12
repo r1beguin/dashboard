@@ -12,7 +12,7 @@ const theme = {
   global: {
     colors: {
       brand: '#cc0000',
-      back: "#022B3A",
+      back: "#292929",
       card: "#bfdbf7",
       accent: "#994650",
       ok: '#00C781',
@@ -31,7 +31,7 @@ function App() {
   const size = React.useContext(ResponsiveContext);
   return (
     <Grommet theme={theme} full>
-      <Box fill align="center" justify="center" background="back" onMouseMove={e => {
+      <Box fill={size!=="small" ? true : false} align="center" justify="center" background="back" onMouseMove={e => {
             let x = 0;
             
             if (size==="small"){
