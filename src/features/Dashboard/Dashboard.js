@@ -5,7 +5,7 @@ import {Box, ResponsiveContext} from 'grommet';
 import Weather from "../Weather/Weather";
 import Stocks from "../Stocks/Stocks";
 import Calendar from "../Calendar/Calendar";
-import LastLaunch from '../Lastlaunch/LastLaunch';
+import LastLaunch from "../Lastlaunch/LastLaunch";
 
 const Dashboard = ({pos}) => {
 
