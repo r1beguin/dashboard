@@ -1,14 +1,18 @@
-import React from "react";
 
-import {Box} from "grommet";
+import {Box} from 'grommet';
 import styled from "styled-components";
 
 
 const MiniButton = styled(Box)`
-border-radius: 35px;
-background: linear-gradient(145deg, #2c2c2c, #252525);
-box-shadow:  6px 6px 11px #1b1b1b, 
-             -6px -6px 11px #373737;
+    background: rgb(222,105,7);
+    background: linear-gradient(90deg, rgba(222,105,7,1) 0%, rgba(204,0,0,1) 62%);
+    box-shadow:  10px 10px 15px #202020, 
+        -10px -10px 15px #323232;
+
+    :active {
+        box-shadow: inset 5px 5px 10px #780000, 
+        inset -5px -5px 10px #ff0000;
+    }
 `;
 
 export default MiniButton;

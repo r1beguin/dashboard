@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Text, Stack } from "grommet";
+import { Box, Text, Stack, ResponsiveContext } from "grommet";
 
 import Cloud from "./Cloud";
 import Rain from "./Rain";
@@ -9,8 +9,7 @@ import Sun from "./Sun";
 import secret from "../../secret.json";
 
 import Card from "../../components/Card"
-import MiniButton from "../../components/MiniButton"
-import CardConcave from "../../components/CardConcave";
+
 
 const Weather = ({pos}) => {
 
@@ -21,7 +20,7 @@ const Weather = ({pos}) => {
     const [weather, setWeather] = React.useState("sun");
 
     React.useEffect(() => {
-
+      
         
         if (refresh) {
             fetch("https://dark-sky.p.rapidapi.com/43.603951,1.444510?lang=en&units=auto", {
@@ -53,9 +52,11 @@ const Weather = ({pos}) => {
 
     }, [refresh])
 
+    const size = React.useContext(ResponsiveContext);
+
     return (
-        <Card  pad="small" width="medium" justify="center" align="center">
-            <CardConcave pad={{top: "xlarge", horizontal:"small"}}>
+        <Card  round="small" pad="small" width="medium" justify="center" align="center">
+            <Box pad={{top: "xlarge", horizontal:"small"}} round="small">
             
                 <Stack anchor="center" margin={{ bottom:"medium"}}>
 
@@ -70,15 +71,20 @@ const Weather = ({pos}) => {
                         <Sun pos={pos}/>
                     )}
                     
-                    <Text>{data && data.currently.temperature.toString().match(/^\d*/g,'')} C°</Text>
+                    <Text size={size}>{data && data.currently.temperature.toString().match(/^\d*/g,'')} C°</Text>
                 </Stack>
 
-             </CardConcave>  
+             </Box>  
             
-            <Box pad="small" align="center">
-                <Text weight="bold">{date}</Text>
-                <Text >{time}</Text>
-                <Text >{data && data.currently.icon}</Text>
+            <Box pad="small" align="center" margin="small">
+                <Box direction="row" gap="small" margin="small">
+                    <Text weight="bold" size={size}>{date}</Text>
+                    <Text size={size}>{time}</Text>
+                </Box>
+                <Box>
+                    <Text size={size}>{data && data.currently.icon}</Text>
+                </Box>
+                
             </Box>        
         </Card>
     )

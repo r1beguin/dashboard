@@ -63,12 +63,12 @@ const Stocks = () => {
     }, [refresh,time])
 
     return (
-        <Card height="medium" round="small" pad="small" justify="center" align="center" >
+        <Card round="small" height={size === "large" ? "medium" :"small"} round="small" pad="small" justify="center" align="center" >
                 
-                <MiniButton align="center" pad="medium">
+                <Card  round="small" align="center" pad="medium">
                     <Text size="small" color="brand">{current} $</Text>
                     <Text size="small" color="brand">{(situation*current).toString().match(/^\d+/g,'')} $</Text>                     
-                </MiniButton>
+                </Card> 
 
             <Box width="350px" height="60%">
                 <ResponsiveContainer >

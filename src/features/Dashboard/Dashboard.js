@@ -1,10 +1,11 @@
 import React from 'react';
 
-import {Box, Text,ResponsiveContext} from 'grommet';
+import {Box, ResponsiveContext} from 'grommet';
 
-import Weather from "../Weather/Weather"
+import Weather from "../Weather/Weather";
 import Stocks from "../Stocks/Stocks";
-import Calendar from "../Calendar/Calendar"
+import Calendar from "../Calendar/Calendar";
+import LastLaunch from '../Lastlaunch/LastLaunch';
 
 const Dashboard = ({pos}) => {
 
@@ -26,7 +27,11 @@ const Dashboard = ({pos}) => {
                 <Box>
                     <Calendar/>
                 </Box>
-            </Box>   
+                
+            </Box> 
+            <Box margin="medium">
+                <LastLaunch />
+            </Box>  
         </Box>
     )
 }

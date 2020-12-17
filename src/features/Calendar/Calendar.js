@@ -24,7 +24,7 @@ const Calendar = () => {
     }, [ApiCalendar.sign])
 
     return (
-        <Card pad="small" justify="center" align="center" width="medium">
+        <Card round="small" pad="small" justify="center" align="center" width="medium">
             
             {!ApiCalendar.sign && (
                 <Box align="center" justify="center" gap="small" margin="small">
