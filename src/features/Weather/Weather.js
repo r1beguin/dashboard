@@ -56,7 +56,7 @@ const Weather = ({pos}) => {
 
     return (
         <Card  round="small" pad="small" width="medium" justify="center" align="center">
-            <Box pad={{top: "xlarge", horizontal:"small"}} round="small">
+            <Box pad={{top: size==="large" ? "xlarge" : size==="small" ? "large" : "medium", horizontal:"small"}} round="small">
             
                 <Stack anchor="center" margin={{ bottom:"medium"}}>
 
@@ -71,7 +71,7 @@ const Weather = ({pos}) => {
                         <Sun pos={pos}/>
                     )}
                     
-                    <Text size={size}>{data && data.currently.temperature.toString().match(/^\d*/g,'')} C°</Text>
+                    <Text size="small">{data && data.currently.temperature.toString().match(/^\d*/g,'')} C°</Text>
                 </Stack>
 
              </Box>  

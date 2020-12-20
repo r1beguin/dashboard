@@ -38,7 +38,7 @@ const Calendar = () => {
                     const start = new Date(item.start.dateTime);
                     const end = new Date(item.end.dateTime)
                     return (
-                        <CardConcave gap="medium" pad="medium"round="small" direction="row" align="center" justify="center" elevation="xxsmall">
+                        <CardConcave gap="small" pad="medium"round="small" direction="row" align="center" justify="center" elevation="xxsmall">
                             {start && (
                                 <Box gap="medium" direction="row" align="center">
                                 <Text size="xsmall">{start && start.toLocaleString().match(/^\d+\/\d+\/\d+/g,'')}</Text>
