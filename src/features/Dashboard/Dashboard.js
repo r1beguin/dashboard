@@ -24,14 +24,13 @@ const Dashboard = ({pos}) => {
                         <Stocks/>
                     </Box>
                 </Box>    
-                <Box>
+                <Box direction={(size==="large" || size==="medium") ? "row" : "column"} gap="large" align="center">
                     <Calendar/>
-                </Box>
+                    <LastLaunch />
+                </Box>  
                 
             </Box> 
-            <Box margin="medium">
-                <LastLaunch />
-            </Box>  
+           
         </Box>
     )
 }
