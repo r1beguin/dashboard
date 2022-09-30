@@ -1,11 +1,10 @@
-import React from "react"
-
+import React from "react";
 
 import Card from "../../components/Card";
 import GradientText from "../../components/GradientText";
 import CardConcave from "../../components/CardConcave";
 
-import {Box, Text, Layer, Image, Button, ResponsiveContext, Collapsible} from "grommet"
+import {Box, Text, Layer, Image, Button, ResponsiveContext} from "grommet"
 
 import { Scrollbars } from 'react-custom-scrollbars';
 

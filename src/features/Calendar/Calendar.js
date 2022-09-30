@@ -6,6 +6,7 @@ import ApiCalendar from 'react-google-calendar-api';
 
 import Card from "../../components/Card"
 import CardConcave from "../../components/CardConcave"
+import GradientText from "../../components/GradientText"
 
 const Calendar = () => {
 
@@ -25,6 +26,9 @@ const Calendar = () => {
 
     return (
         <Card round="small" pad="small" justify="center" align="center" width="medium">
+            <Box fill="horizontal" align="start" margin="small" pad={{left: "medium"}}>
+                <GradientText weight="bold" size="medium">Next events</GradientText>
+            </Box>
             
             {!ApiCalendar.sign && (
                 <Box align="center" justify="center" gap="small" margin="small">
@@ -39,6 +43,7 @@ const Calendar = () => {
                     const end = new Date(item.end.dateTime)
                     return (
                         <CardConcave gap="small" pad="medium"round="small" direction="row" align="center" justify="center" elevation="xxsmall">
+                            
                             {start && (
                                 <Box gap="medium" direction="row" align="center">
                                 <Text size="xsmall">{start && start.toLocaleString().match(/^\d+\/\d+\/\d+/g,'')}</Text>
